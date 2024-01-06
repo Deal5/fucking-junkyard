@@ -103,7 +103,13 @@
 	if(!species_modifier)
 		species_modifier = economic_species_modifier[/datum/species/human]
 
-	var/money_amount = one_time_payment(species_modifier)
+	var/money_amount = one_time_payment(species_modifier) //DEAL CHECK THIS OUT
+	if(H.stats.getPerk(PERK_NOBLE))
+		if(H.job == JOB_COMMAND)
+			if(money_amount != 0) // this is the captain, he broke and dont need money!
+				money_amount += rand(9000, 11000)
+		if(H.job != JOBS_COMMAND)
+			money_amount += rand(4000, 6000)
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null, department, wage, aster_guild_member)
 	if(H.mind)
 		var/remembered_info = ""
