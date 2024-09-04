@@ -162,6 +162,10 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool, var/surgery
 
 	var/zone = user.targeted_organ
 	var/obj/item/organ/external/affected
+	
+	if(M.body_part_covered(zone))
+		to_chat(user, SPAN_WARNING("[M]'s clothing is in the way!"))
+		return FALSE
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
