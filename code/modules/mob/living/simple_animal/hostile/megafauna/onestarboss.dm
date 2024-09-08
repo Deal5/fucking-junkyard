@@ -557,7 +557,7 @@ Effects demand parent code, so ..()
 								i--
 								shoot_minigun(A)
 								shoot_minigun(B)
-								sleep(500 MILLISECONDS)
+								sleep(100 MILLISECONDS)
 							qdel(A)
 							qdel(B)
 							doing_something = FALSE
